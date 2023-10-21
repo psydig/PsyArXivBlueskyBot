@@ -8,7 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_PAT }}
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -24,6 +26,11 @@ jobs:
         env:
           BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
           BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
+      - name: Commit and push if changes
+        run: |
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update posted papers" && git push)
+
 
 
 
