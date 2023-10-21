@@ -1,6 +1,9 @@
+// index.ts
+
 import Bot from "./lib/bot.js";
 import getPostText from "./lib/getPostText.js";
 import fs from 'fs';
+import { execSync } from 'child_process';  // <-- Add this import
 
 interface Paper {
   title: string;
@@ -24,6 +27,12 @@ async function main() {
       fs.writeFileSync(POSTED_PAPERS_PATH, JSON.stringify(postedPapers, null, 2));
 
       console.log(`[${new Date().toISOString()}] Posted: "${formattedText}"`);
+
+      // Commit and push the changes
+      execSync('git add ' + POSTED_PAPERS_PATH);
+      execSync('git commit -m "Added new posted paper"');
+      execSync('git push origin main'); 
+
     } else {
       console.log(`[${new Date().toISOString()}] Already posted: "${title}"`);
     }
@@ -33,4 +42,3 @@ async function main() {
 }
 
 main();
-

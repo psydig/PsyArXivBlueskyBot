@@ -8,7 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2   # Change v3 to v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}   # Add this line
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -20,4 +22,5 @@ jobs:
         env:
           BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
           BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
+
 
