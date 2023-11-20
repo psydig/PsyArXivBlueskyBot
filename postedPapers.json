@@ -2611,6 +2611,10 @@
     {
       "title": "Distinct role of central predictive mechanisms in tactile suppression",
       "link": "http://osf.io/rqs9p/"
+    },
+    {
+      "title": "Estimating Latent State-Trait Models for Experience-Sampling Data in R with the lsttheory package: a Tutorial",
+      "link": "http://osf.io/ds9rv/"
     }
   ]
 }
