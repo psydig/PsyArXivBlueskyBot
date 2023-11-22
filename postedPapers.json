@@ -2811,6 +2811,10 @@
     {
       "title": "Fostering Diversity in Mathematics Cognition",
       "link": "http://osf.io/bdn5p/"
+    },
+    {
+      "title": "Motion-BIDS: extending the Brain Imaging Data Structure specification to organize motion data for reproducible research",
+      "link": "http://osf.io/w6z79/"
     }
   ]
 }
