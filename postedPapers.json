@@ -2923,6 +2923,10 @@
     {
       "title": "Putting the \"return\" back in the inhibition of return effect in working memory",
       "link": "http://osf.io/f2eqy/"
+    },
+    {
+      "title": "MacBehaviour: An R package for behavioural experimentation on large language models",
+      "link": "http://osf.io/ywtfd/"
     }
   ]
 }
