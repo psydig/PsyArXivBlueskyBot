@@ -3011,6 +3011,10 @@
     {
       "title": "Perspectives on Post-Stroke Digital Health: A Qualitative Inquiry into Secondary Prevention and Wellbeing",
       "link": "http://osf.io/bn2zk/"
+    },
+    {
+      "title": "The ``neglecting the vectorization\" error in Stan: Erroneous coding practices for computing marginal likelihood and Bayes factors in models with vectorized truncated distributions",
+      "link": "http://osf.io/8bq5j/"
     }
   ]
 }
