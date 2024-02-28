@@ -21,8 +21,8 @@ export default async function getPostText() {
     const publicationDate = item.pubDate ? new Date(item.pubDate) : new Date();
     const currentDate = new Date();
 
-// Skip papers with titles longer than 300 graphemes
-    if (item.title.length > 280) {
+    // Check if title is defined and skip papers with titles longer than 280 graphemes
+    if (!item.title || item.title.length > 280) {
       continue;
     }
 
@@ -39,4 +39,5 @@ export default async function getPostText() {
 
   return papersToPost.length > 0 ? papersToPost : null;
 }
+
 
