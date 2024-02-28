@@ -27,8 +27,10 @@ export default async function getPostText() {
     }
 
     const isAlreadyPosted = postedPapers.papers.some((paper: Paper) => paper.title === item.title && paper.link === item.link);
+const formattedText = `${item.title}: ${item.link}`;
+    const isWithinLengthLimit = formattedText.length <= 290;
 
-    if (!isAlreadyPosted && (currentDate.getTime() - publicationDate.getTime() <= ONE_DAY)) {
+    if (!isAlreadyPosted && (currentDate.getTime() - publicationDate.getTime() <= ONE_DAY) && isWithinLengthLimit) {
       papersToPost.push({
         title: item.title,
         link: item.link,
