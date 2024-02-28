@@ -21,13 +21,15 @@ export default async function getPostText() {
     const publicationDate = item.pubDate ? new Date(item.pubDate) : new Date();
     const currentDate = new Date();
 
+const trimmedTitle = item.title.length > 280 ? item.title.substring(0, 277) + '...' : item.title;
+
     const isAlreadyPosted = postedPapers.papers.some((paper: Paper) => paper.title === item.title && paper.link === item.link);
 
     if (!isAlreadyPosted && (currentDate.getTime() - publicationDate.getTime() <= ONE_DAY)) {
       papersToPost.push({
-        title: item.title,
+        title: trimmedTitle,
         link: item.link,
-        formattedText: `${item.title}: ${item.link}`
+        formattedText: `${trimmedTitle}: ${item.link}`
       });
     }
   }
