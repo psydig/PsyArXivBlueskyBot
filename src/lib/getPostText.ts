@@ -21,15 +21,18 @@ export default async function getPostText() {
     const publicationDate = item.pubDate ? new Date(item.pubDate) : new Date();
     const currentDate = new Date();
 
-const trimmedTitle = item.title.length > 280 ? item.title.substring(0, 277) + '...' : item.title;
+// Skip papers with titles longer than 300 graphemes
+    if (item.title.length > 280) {
+      continue;
+    }
 
     const isAlreadyPosted = postedPapers.papers.some((paper: Paper) => paper.title === item.title && paper.link === item.link);
 
     if (!isAlreadyPosted && (currentDate.getTime() - publicationDate.getTime() <= ONE_DAY)) {
       papersToPost.push({
-        title: trimmedTitle,
+        title: item.title,
         link: item.link,
-        formattedText: `${trimmedTitle}: ${item.link}`
+        formattedText: `${item.title}: ${item.link}`
       });
     }
   }
