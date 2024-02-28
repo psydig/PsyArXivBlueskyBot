@@ -21,11 +21,6 @@ export default async function getPostText() {
     const publicationDate = item.pubDate ? new Date(item.pubDate) : new Date();
     const currentDate = new Date();
 
-    // Check if title is defined and skip papers with titles longer than 280 graphemes
-    if (!item.title || item.title.length > 280) {
-      continue;
-    }
-
     const isAlreadyPosted = postedPapers.papers.some((paper: Paper) => paper.title === item.title && paper.link === item.link);
 const formattedText = `${item.title}: ${item.link}`;
     const isWithinLengthLimit = formattedText.length <= 290;
