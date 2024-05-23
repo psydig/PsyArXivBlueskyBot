@@ -16347,6 +16347,10 @@
     {
       "title": "Bayesian Multilevel VAR Models with Random Covariance Matrices: Estimation Requirements",
       "link": "http://osf.io/5fk8v/"
+    },
+    {
+      "title": "Introducing CounseLLMe: A dataset of simulated mental health dialogues for comparing LLMs like Haiku, LLaMAntino and ChatGPT against humans",
+      "link": "http://osf.io/vhmqs/"
     }
   ]
 }
