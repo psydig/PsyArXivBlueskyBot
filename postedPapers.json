@@ -29063,6 +29063,10 @@
     {
       "title": "Human vs. Machine: A Comparative Analysis of Qualitative Coding by Humans and ChatGPT-4",
       "link": "http://osf.io/8g36r/"
+    },
+    {
+      "title": "mlmpower: An R Package for Conducting Power Analysis and Data Simulation with Multilevel Models",
+      "link": "http://osf.io/utjrg/"
     }
   ]
 }
