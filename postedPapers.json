@@ -29091,6 +29091,10 @@
     {
       "title": "The Impact of Focal Cortical Lesions on the Development of Cognitive Ability: Testing causality after the longitudinal analysis of 464 children",
       "link": "http://osf.io/4th8x/"
+    },
+    {
+      "title": "eddymotion: An open implementation of FSL's eddy with volume-to-volume artifact estimation for neuroimaging beyond diffusion MRI",
+      "link": "http://osf.io/gfny9/"
     }
   ]
 }
