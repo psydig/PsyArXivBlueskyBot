@@ -40191,6 +40191,10 @@
     {
       "title": "An exploration of aphasia symptom profiles in speakers of Kalaallisut (West Greenlandic)",
       "link": "https://osf.io/pty6x"
+    },
+    {
+      "title": "Estimating Signal Detection Models with regression using the brms R package",
+      "link": "https://osf.io/vtfc3"
     }
   ]
 }
