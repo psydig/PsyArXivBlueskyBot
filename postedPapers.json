@@ -41439,6 +41439,10 @@
     {
       "title": "Solriamfetol improves daily fatigue symptoms in adults with myalgic encephalomyelitis/chronic fatigue syndrome after eight weeks of treatment",
       "link": "https://osf.io/j6v5t"
+    },
+    {
+      "title": "StructuralEquationModels.jl: a Julia Package for Extensible and Efficient Structural Equation Modeling",
+      "link": "https://doi.org/10.31234/osf.io/zwe8g_v1"
     }
   ]
 }
