@@ -100,3 +100,4 @@ YOu can change the **posting frequency** by editing the `cron` schedule in `post
 - To **adjust post limits**, edit `MAX_POSTS_PER_RUN` in `getPostText.ts`.
 - To **change the feed**, update the `FEED_URL` in `getPostText.ts`.
 - To **change the posting frequency**, edit the `cron` schedule in `.github/workflows/post.yml`.
+- To **change the Bluesky account details**, update the GitHub Secrets.
