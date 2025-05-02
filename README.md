@@ -1,4 +1,3 @@
-
 # PsyArXiv Bluesky Bot
 
 This project builds on the [Bluesky bot template](https://github.com/philnash/bsky-bot) provided by Phil Nash - big thanks! to automatically fetch new PsyArXiv preprints via RSS and post summaries to Bluesky.
@@ -40,16 +39,23 @@ This README focuses only on the ArXiv-specific logic and maintenance.
 | `src/bot.ts`         | Handles Bluesky login and posting.                                                    |
 | `src/getPostText.ts` | Parses the RSS feed, filters out already-posted papers, and prepares post texts.      |
 | `src/index.ts`       | Main script: pulls new posts, sends them to Bluesky, and updates `postedPapers.json`. |
+| `.github/workflows/post.yml` | GitHub Action that runs the bot automatically on schedule. |
 
 ---
 
 ## Setup
 
-1. **Environment Variables** (set via `.env` or CI/CD configuration):
+The handle and the PW need to be set in the GitHub secrets of the repo (Settings/secrets and variables/actions).
+Additionally there is the GH_PAT (GitHub personal access token) that is needed for the github actions to push the changes to the postedPapers.json file on for this whole workflow to work automatically. 
+This token can be generated in the general settings of the github account under settings/tokens and then needs to be copied into the secret. I have not defined any expiration date for it so it works permanently.
 
-   * `BSKY_HANDLE`: Bluesky handle
-   * `BSKY_PASSWORD`: Bluesky PW
-   * `BSKY_SERVICE`: (optional) Bluesky service URL, defaults to `https://bsky.social`
+1. **GitHub Secrets**:
+   - `BSKY_HANDLE`: Bluesky handle
+   - `BSKY_PASSWORD`: the app password for the bot
+   - `GH_PAT`: GitHub personal access token (used for committing updates to `postedPapers.json`). 
+   This is now defined from the psydig account and can be changed there.
+
+Note, if you want to go back to run the bot manually you need to create an .env file with the passwords and the handle, see the template for reference.
 
 2. **Dependencies**:
 
@@ -59,17 +65,38 @@ This README focuses only on the ArXiv-specific logic and maintenance.
      ```bash
      npm install
      ```
+---
+
+## GitHub Actions Automation
+
+This bot runs automatically on GitHub, thanks to a workflow defined in `.github/workflows/post.yml`.
+
+### How to think about this
+
+You can think of GitHub Actions as your automated helper, which runs the bot automatically.	It checks for new papers, posts them, and updates tracking files on a schedule.
+It keeps working in the background as long as the workflow is enabled and the GitHub secrets are correctly set.
+
+If you want to apply or adjust this:
+YOu can change the **posting frequency** by editing the `cron` schedule in `post.yml` or Update the **Bluesky account or credentials** by changing the GitHub Secrets.
 
 ---
 
-## Maintenance
+### Workflow details
 
-* To **reset posted tracking**, delete or clear `postedPapers.json`.
-* To **adjust post limits**, modify `MAX_POSTS_PER_RUN` in `getPostText.ts`.
-* To **change the feed source**, update the `FEED_URL` in `getPostText.ts`. This could be done if the RSS feed does not get updated or if you want to switch to a different source.
+- **Schedule**: runs every 30 minutes (`*/30 * * * *`)
+  
+- **What it does** (each run):
+  1. Checks out the repository (with permission to push changes).
+  2. Installs Node.js and dependencies.
+  3. Builds and runs the bot.
+  4. Updates the `postedPapers.json` file if new papers were posted.
+  5. Commits the updated file back to the repository to maintain state.
 
 ---
 
-## Deploy
+## Maintenance Tips
 
-Follow the deployment instructions from the template README — using GitHub Actions on a schedule.
+- To **reset posted tracking**, delete or clear `postedPapers.json`.
+- To **adjust post limits**, edit `MAX_POSTS_PER_RUN` in `getPostText.ts`.
+- To **change the feed**, update the `FEED_URL` in `getPostText.ts`.
+- To **change the posting frequency**, edit the `cron` schedule in `.github/workflows/post.yml`.
