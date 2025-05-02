@@ -9,9 +9,9 @@ It uses TypeScript, the `@atproto/api`, and runs as a scheduled task.
 
 ## Reference
 
-For general setup, environment variables, GitHub Actions, and deployment, **please refer to the original template README** included in this repository (`README.md`).
+For general setup, environment variables, GitHub Actions, and deployment, **please refer to the original template README**.
 
-This README focuses only on the PsyArXiv-specific logic and maintenance.
+This README focuses only on the ArXiv-specific logic and maintenance.
 
 ---
 
@@ -47,8 +47,8 @@ This README focuses only on the PsyArXiv-specific logic and maintenance.
 
 1. **Environment Variables** (set via `.env` or CI/CD configuration):
 
-   * `BSKY_HANDLE`: your Bluesky handle (e.g., `mybot.bsky.social`)
-   * `BSKY_PASSWORD`: the app password for the bot
+   * `BSKY_HANDLE`: Bluesky handle
+   * `BSKY_PASSWORD`: Bluesky PW
    * `BSKY_SERVICE`: (optional) Bluesky service URL, defaults to `https://bsky.social`
 
 2. **Dependencies**:
@@ -62,14 +62,14 @@ This README focuses only on the PsyArXiv-specific logic and maintenance.
 
 ---
 
-## Maintenance Tips
+## Maintenance
 
 * To **reset posted tracking**, delete or clear `postedPapers.json`.
 * To **adjust post limits**, modify `MAX_POSTS_PER_RUN` in `getPostText.ts`.
-* To **change the feed source**, update the `FEED_URL` in `getPostText.ts`.
+* To **change the feed source**, update the `FEED_URL` in `getPostText.ts`. This could be done if the RSS feed does not get updated or if you want to switch to a different source.
 
 ---
 
 ## Deploy
 
-Follow the deployment instructions from the template README — typically using GitHub Actions on a schedule.
+Follow the deployment instructions from the template README — using GitHub Actions on a schedule.
