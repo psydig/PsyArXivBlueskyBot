@@ -77,9 +77,42 @@ The .nvmrc file defines which Node.js version is used for the GitHub Actions (vi
 
 ## Maintenance Tips
 
-- To **abort the bot**, simply delete the GitHub Action workflow file `.github/workflows/post.yml` or change the shedule to something that will not run in a long time (e.g. "* * * */12 *")
-- In the past there where instances where the bot failed because the papers it tried to post where not compatible with the Bluesky API. For example there was one paper that had a very long title and the bot failed to post it. In cases like this it is better to change the bot s.t. it can handle such cases in the future. If for some reason you cannot figure out why a certain paper makes the bot fail you can manually add it to the postedPapers.json file. This is a list of all the papers that have been posted. Just check the format in which they are saved and copy/paste it from the RSS feed in there. This paper will then be ignored in the posting. 
-- To **adjust post limits**, edit `MAX_POSTS_PER_RUN` in `getPostText.ts`. Note, there is a limit of posts one can post on Bluesky I think and therefore when it tries to post too many the Github Action fails and it then posts the same papers again and again because the action only posts them but it fails to then continue and store them as posted. Also, there is a character limit per post which is also handeled.
-- To **change the feed**, update the `FEED_URL` in `getPostText.ts`
-- To **change the posting frequency**, edit the `cron` schedule in `.github/workflows/post.yml`
-- To **change the Bluesky account details**, update the GitHub Secrets
+- **Action failure emails**  
+  Occasionally, you might receive an email saying that a GitHub Action failed.  
+  This can happen for several reasons — for example, too many simultaneous requests or a temporary issue with the Bluesky API.  
+  - If it happens just once or twice, there’s usually no need to worry.  
+  - You can check the repository’s **Actions** tab to see all recent runs.  
+    - If there are successful runs (green checkmarks) after the failed ones, everything has likely recovered.  
+    - If you see repeated failures (red marks), it’s a sign that something needs attention.
+
+- **Why repeated failures matter**  
+  When a job fails partway (for example, after posting 5 papers but failing on the 6th), the bot doesn’t update the `postedPapers.json` file.  
+  This means that on the next run, it will try to post the same papers again, leading to duplicates or spam.  
+  That’s why persistent failures should be investigated and fixed.
+
+- **How to pause or stop the bot**  
+  To temporarily stop the bot from posting:
+  - Delete or rename the workflow file `.github/workflows/post.yml`.  
+  - Or change the cron schedule inside the workflow to something that effectively disables it (for example, `* * * */12 *`).
+
+- **Handling problematic papers**  
+  Sometimes the bot may fail because a specific paper (e.g., with an unusually long title) isn’t compatible with the Bluesky API.  
+  To handle this:
+  - Ideally, update the bot’s code to skip or handle such cases in the future.  
+  - As a quick fix, you can manually add that paper’s identifier to `postedPapers.json`.  
+    - Check the format of existing entries carefully.  
+    - Copy the paper’s details from the RSS feed into the file to ensure it’s skipped in future runs.
+
+- **Adjusting post limits**  
+  Change the `MAX_POSTS_PER_RUN` setting in `getPostText.ts`.  
+  Note: Bluesky may impose limits on how many posts an account can make in a certain time window.  
+  If the bot tries to post too many, the GitHub Action may fail before updating the posted list, leading to repeated reposting.
+
+- **Changing the feed source**  
+  Update the `FEED_URL` value in `getPostText.ts` to switch to a different RSS feed.
+
+- **Updating posting frequency**  
+  Modify the cron schedule in `.github/workflows/post.yml` to adjust how often the bot runs (e.g., every 30 minutes, every hour).
+
+- **Updating Bluesky account details**  
+  Go to **Settings → Secrets and variables → Actions** in the GitHub repository and update the `BSKY_HANDLE` and `BSKY_PASSWORD` secrets.
