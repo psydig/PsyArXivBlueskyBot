@@ -50171,6 +50171,10 @@
     {
       "title": "Nocebo effects are stronger and more persistent than placebo effects in healthy individuals",
       "link": "https://osf.io/68wcy"
+    },
+    {
+      "title": "Dyadic Data Analysis via Structural Equation Modeling with Latent Variables:  A Tutorial with the dySEM package for R",
+      "link": "https://osf.io/ymrpf"
     }
   ]
 }
