@@ -50175,6 +50175,10 @@
     {
       "title": "Dyadic Data Analysis via Structural Equation Modeling with Latent Variables:  A Tutorial with the dySEM package for R",
       "link": "https://osf.io/ymrpf"
+    },
+    {
+      "title": "Validating dynamic time warping as a measure of gesture form similarity",
+      "link": "https://osf.io/7f6mu"
     }
   ]
 }
