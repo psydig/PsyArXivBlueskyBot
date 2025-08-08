@@ -53843,6 +53843,10 @@
     {
       "title": "Linear and Nonlinear Effects of Spatial and Temporal Attention: Human Data and Drift Diffusion Model",
       "link": "https://osf.io/7fwnt"
+    },
+    {
+      "title": "The diffusion model's drift rate parameter primarily reflects efficiency, rather than speed, of evidence accumulation",
+      "link": "https://osf.io/nu9gm"
     }
   ]
 }
