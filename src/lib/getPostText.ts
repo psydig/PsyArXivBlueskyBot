@@ -19,21 +19,12 @@ function loadPostedPapers() {
 
 const postedPapers = loadPostedPapers();
 
-const ONE_DAY = 60 * 60 * 1000;
+const ONE_DAY = 24 * 60 * 60 * 1000;  // ✅ fixed: 24 hours in milliseconds
 const MAX_POSTS_PER_RUN = 20;
 
 export default async function getPostText() {
   const parser = new Parser();
   const feed = await parser.parseURL(FEED_URL);
-
-  // ✅ TEMPORARY DEBUG - remove after fixing
-  console.log('✅ Feed title:', feed.title);
-  console.log('✅ Total items:', feed.items.length);
-  if (feed.items.length > 0) {
-    console.log('🔍 First item (raw):', JSON.stringify(feed.items[0], null, 2));
-  } else {
-    console.log('❌ No items found in feed');
-  }
 
   const papersToPost = [];
 
