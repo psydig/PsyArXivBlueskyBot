@@ -15,7 +15,7 @@ For general setup, environment variables and deployment, please refer to the ori
 ## What This Bot Does
 
 * **Fetches ArXiv RSS feed**
-  Uses [`rss-parser`](https://www.npmjs.com/package/rss-parser) to read from [`here` (https://share.osf.io/api/v2/feeds/atom/?elasticQuery=%7B%22bool%22%3A%7B%22filter%22%3A%5B%7B%22term%22%3A%7B%22sources%22%3A%22PsyArXiv%22%7D%7D%2C%7B%22term%22%3A%7B%22type%22%3A%22preprint%22%7D%7D%5D%7D%7D)
+  Uses [`rss-parser`](https://www.npmjs.com/package/rss-parser) to read from [`here`](https://share.osf.io/api/v2/feeds/atom/?elasticQuery=%7B%22bool%22%3A%7B%22filter%22%3A%5B%7B%22term%22%3A%7B%22sources%22%3A%22PsyArXiv%22%7D%7D%2C%7B%22term%22%3A%7B%22type%22%3A%22preprint%22%7D%7D%5D%7D%7D)
 
 * **Tracks already posted papers**
   Stores IDs of posted papers in `postedPapers.json` to avoid duplicates.
